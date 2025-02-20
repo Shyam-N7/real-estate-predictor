@@ -29,7 +29,7 @@ React and Axios for frontend
 ✅ 2. Clone the Repository
 
 # Clone the project from GitHub (replace with your actual repo URL)
-git clone https://github.com/yourusername/real-estate-predictor.git
+git clone https://github.com/Shyam-N7/real-estate-predictor.git
 cd real-estate-predictor
 
 ✅ 3. Backend Setup (FastAPI)
