@@ -6,14 +6,23 @@ import joblib
 
 app = FastAPI()
 
+# Get frontend URL from environment variable or use a default
+frontend_url = os.getenv("FRONTEND_URL", "http://localhost:3000")  # Default to local for testing
+
+origins = [frontend_url]
+
 # CORS Configuration to allow frontend requests
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Allows requests from React
+    allow_origins=origins,  # Allows requests from React
     allow_credentials=True,
     allow_methods=["*"],  # Allows all HTTP methods (GET, POST, etc.)
     allow_headers=["*"],  # Allows all headers
 )
+
+@app.get("/")
+def read_root():
+    return {"message": "Backend is running successfully!"}
 
 # Load trained model
 try:
@@ -44,3 +53,7 @@ def predict(data: PredictionInput):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)
+    
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
