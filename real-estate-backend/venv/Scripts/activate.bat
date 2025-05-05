@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set "VIRTUAL_ENV=C:\Users\shyam\Real-Estate-Valuation-Model-main\real-estate-backend\venv"
+set "VIRTUAL_ENV=D:\Real-Estate-Valuation-Model-main\real-estate-backend\venv"
 
 if not defined PROMPT set PROMPT=$P$G
 

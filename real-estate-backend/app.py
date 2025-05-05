@@ -3,18 +3,21 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import pandas as pd
 import joblib
+import os
 
 app = FastAPI()
 
 # Get frontend URL from environment variable or use a default
-frontend_url = os.getenv("FRONTEND_URL", "http://localhost:3000")  # Default to local for testing
+# frontend_url = [os.getenv("FRONTEND_URL", "http://localhost:3000"),
+#                 "https://real-estate-frontend-24p0pgezk-shyams-projects-0afec735.vercel.app"
+#             ]  # Default to local for testing
 
-origins = [frontend_url]
+# origins = [frontend_url]
 
 # CORS Configuration to allow frontend requests
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # Allows requests from React
+    allow_origins=["*"],  # Allows requests from React  
     allow_credentials=True,
     allow_methods=["*"],  # Allows all HTTP methods (GET, POST, etc.)
     allow_headers=["*"],  # Allows all headers
